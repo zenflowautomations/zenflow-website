@@ -1,4 +1,3 @@
-import { db } from "@/lib/db";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod/v4";
 
@@ -26,16 +25,32 @@ export async function POST(request: NextRequest) {
 
     const data = parsed.data;
 
-    await db.contactSubmission.create({
-      data: {
+    const googleSheetsUrl = process.env.GOOGLE_SHEETS_URL;
+
+    if (!googleSheetsUrl) {
+      console.error("GOOGLE_SHEETS_URL environment variable is not set");
+      return NextResponse.json(
+        { error: "Server configuration error" },
+        { status: 500 }
+      );
+    }
+
+    const response = await fetch(googleSheetsUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
         name: data.name,
         email: data.email,
-        phone: data.phone || null,
-        business: data.business || null,
+        phone: data.phone || "",
+        business: data.business || "",
+        package: data.package || "",
         message: data.message,
-        package: data.package || null,
-      },
+      }),
     });
+
+    if (!response.ok) {
+      throw new Error(`Google Sheets request failed: ${response.status}`);
+    }
 
     return NextResponse.json(
       { success: true, message: "Submission received" },
