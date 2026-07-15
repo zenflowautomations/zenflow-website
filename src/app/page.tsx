@@ -1,31 +1,51 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useSyncExternalStore, useEffect } from "react";
 import { SplashScreen } from "@/components/splash-screen";
 import { Navigation } from "@/components/navigation";
 import { HeroSection } from "@/components/hero-section";
 import { ServicesSection } from "@/components/services-section";
+import { IndustriesSection } from "@/components/industries-section";
 import { HowItWorksSection } from "@/components/how-it-works-section";
 import { FaqSection } from "@/components/faq-section";
-import { PricingSection } from "@/components/pricing-section";
-import { AboutSection } from "@/components/about-section";
-import { ContactSection } from "@/components/contact-section";
 import { Footer } from "@/components/footer";
 import { motion } from "framer-motion";
+
+const emptySubscribe = () => () => {};
+
+function useHasVisited(): boolean {
+  return useSyncExternalStore(
+    emptySubscribe,
+    () => sessionStorage.getItem("zenflow_visited") === "true",
+    () => false
+  );
+}
 
 export default function Home() {
   const [splashDone, setSplashDone] = useState(false);
   const [showContent, setShowContent] = useState(false);
+  const isReturning = useHasVisited();
+
+  // Mark visited on first render (client-only side effect, no setState)
+  useEffect(() => {
+    if (!sessionStorage.getItem("zenflow_visited")) {
+      sessionStorage.setItem("zenflow_visited", "true");
+    }
+  }, []);
 
   const handleSplashComplete = useCallback(() => {
     setSplashDone(true);
-    // Small delay so splash fade-out finishes before content appears
     setTimeout(() => setShowContent(true), 100);
   }, []);
 
   return (
     <>
-      {!splashDone && <SplashScreen onComplete={handleSplashComplete} />}
+      {!splashDone && (
+        <SplashScreen
+          onComplete={handleSplashComplete}
+          isReturning={isReturning}
+        />
+      )}
 
       {showContent && (
         <div className="min-h-screen flex flex-col noise-overlay relative">
@@ -40,11 +60,9 @@ export default function Home() {
               <HeroSection />
             </motion.div>
             <ServicesSection />
+            <IndustriesSection />
             <HowItWorksSection />
-            <PricingSection />
             <FaqSection />
-            <AboutSection />
-            <ContactSection />
           </main>
 
           <Footer />

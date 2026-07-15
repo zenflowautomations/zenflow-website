@@ -15,28 +15,28 @@ const STEPS = [
     icon: ClipboardList,
     title: "Discovery & Onboarding",
     description:
-      "We collect your booking links, FAQs, tone preferences, and business specifics. You share how you want your AI to sound and what questions it should handle.",
+      "We learn your business inside out — your booking links, FAQs, tone preferences, and operational specifics. You tell us how you want your AI to sound and what questions it should handle.",
   },
   {
     step: "02",
     icon: Cpu,
     title: "AI Agent Build",
     description:
-      "Our team architects and builds a custom AI voice and chat agent tailored to your spa. We configure intelligent routing, calendar integration, and conversation flows.",
+      "Our team architects and builds a custom AI voice and chat agent tailored to your business. We configure intelligent routing, calendar integration, and conversation flows specific to your industry.",
   },
   {
     step: "03",
     icon: PhoneCall,
     title: "Testing & Quality Assurance",
     description:
-      "Before going live, we rigorously test every interaction. We ensure the AI sounds professional, books correctly, and handles edge cases just the way you would.",
+      "Before going live, we rigorously test every interaction. We ensure the AI sounds professional, handles tasks correctly, and manages edge cases just the way your team would.",
   },
   {
     step: "04",
     icon: Rocket,
     title: "Launch & Ongoing Support",
     description:
-      "Your AI receptionist goes live on your phones and website. We monitor performance, optimize conversations, and provide ongoing maintenance as your business evolves.",
+      "Your AI agent goes live on your phones, website, and social channels. We monitor performance, optimize conversations, and provide ongoing maintenance as your business evolves.",
   },
 ];
 
@@ -83,7 +83,7 @@ export function HowItWorksSection() {
             custom={2}
             className="mt-4 text-base sm:text-lg text-muted-foreground font-body leading-relaxed"
           >
-            A straightforward four-step process to get your AI receptionist
+            A straightforward four-step process to get your custom AI agent
             live and handling your frontline communication.
           </motion.p>
         </motion.div>

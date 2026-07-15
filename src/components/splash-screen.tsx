@@ -3,21 +3,40 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 
-export function SplashScreen({ onComplete }: { onComplete: () => void }) {
+export function SplashScreen({
+  onComplete,
+  isReturning,
+}: {
+  onComplete: () => void;
+  isReturning: boolean;
+}) {
   const [phase, setPhase] = useState<"entering" | "visible" | "exiting">(
     "entering"
   );
 
   useEffect(() => {
-    const t1 = setTimeout(() => setPhase("visible"), 400);
-    const t2 = setTimeout(() => setPhase("exiting"), 2800);
-    const t3 = setTimeout(() => onComplete(), 3400);
-    return () => {
-      clearTimeout(t1);
-      clearTimeout(t2);
-      clearTimeout(t3);
-    };
-  }, [onComplete]);
+    if (isReturning) {
+      // Short splash: 1.5s total
+      const t1 = setTimeout(() => setPhase("visible"), 200);
+      const t2 = setTimeout(() => setPhase("exiting"), 1000);
+      const t3 = setTimeout(() => onComplete(), 1500);
+      return () => {
+        clearTimeout(t1);
+        clearTimeout(t2);
+        clearTimeout(t3);
+      };
+    } else {
+      // Full splash: 3.4s total
+      const t1 = setTimeout(() => setPhase("visible"), 400);
+      const t2 = setTimeout(() => setPhase("exiting"), 2800);
+      const t3 = setTimeout(() => onComplete(), 3400);
+      return () => {
+        clearTimeout(t1);
+        clearTimeout(t2);
+        clearTimeout(t3);
+      };
+    }
+  }, [onComplete, isReturning]);
 
   return (
     <AnimatePresence>
@@ -88,15 +107,17 @@ export function SplashScreen({ onComplete }: { onComplete: () => void }) {
           </motion.p>
         </motion.div>
 
-        {/* Tagline */}
-        <motion.p
-          className="font-body text-xs text-white/20 mt-14 tracking-wider"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: phase === "entering" ? 0 : 1 }}
-          transition={{ duration: 1, delay: 0.8 }}
-        >
-          AI Receptionists for Modern Spas
-        </motion.p>
+        {/* Tagline — hidden on short splash */}
+        {!isReturning && (
+          <motion.p
+            className="font-body text-xs text-white/20 mt-14 tracking-wider"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: phase === "entering" ? 0 : 1 }}
+            transition={{ duration: 1, delay: 0.8 }}
+          >
+            AI Automations for Modern Businesses
+          </motion.p>
+        )}
       </motion.div>
     </AnimatePresence>
   );

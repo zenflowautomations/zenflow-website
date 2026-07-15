@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Send, Loader2, CheckCircle2 } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -26,7 +25,12 @@ const fadeInUp = {
   }),
 };
 
-export function ContactSection() {
+interface ContactFormProps {
+  defaultPackage?: string;
+  customId?: string;
+}
+
+export function ContactForm({ defaultPackage, customId }: ContactFormProps) {
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const { toast } = useToast();
@@ -75,10 +79,11 @@ export function ContactSection() {
     }
   };
 
-  return (
-    <section id="contact" className="relative py-24 sm:py-32">
-      <div className="absolute inset-0 bg-radial-hero opacity-30 pointer-events-none" />
+  const id = customId || "contact";
 
+  return (
+    <section id={id} className="relative py-24 sm:py-32">
+      <div className="absolute inset-0 bg-radial-hero opacity-30 pointer-events-none" />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
           {/* Left: Info */}
@@ -89,12 +94,9 @@ export function ContactSection() {
             className="flex flex-col justify-center"
           >
             <motion.div variants={fadeInUp} custom={0}>
-              <Badge
-                variant="outline"
-                className="border-brand/20 bg-brand-muted text-brand font-body text-xs tracking-wide px-4 py-1.5 rounded-full"
-              >
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand/20 bg-brand-muted text-brand text-xs font-body font-medium tracking-wide">
                 Get In Touch
-              </Badge>
+              </span>
             </motion.div>
 
             <motion.h2
@@ -121,18 +123,9 @@ export function ContactSection() {
               className="mt-10 space-y-4"
             >
               {[
-                {
-                  label: "Email",
-                  value: "hello@zenflowautomations.com",
-                },
-                {
-                  label: "Response Time",
-                  value: "Within 24 hours",
-                },
-                {
-                  label: "Availability",
-                  value: "Mon - Sat, 10 AM - 2 AM EST",
-                },
+                { label: "Email", value: "hello@zenflowautomations.com" },
+                { label: "Response Time", value: "Within 24 hours" },
+                { label: "Availability", value: "Mon - Sat, 10 AM - 2 AM EST" },
               ].map((item) => (
                 <div key={item.label} className="flex flex-col gap-1">
                   <span className="text-xs font-body text-muted-foreground uppercase tracking-wider">
@@ -179,14 +172,11 @@ export function ContactSection() {
               >
                 <div className="grid gap-5 sm:grid-cols-2">
                   <div className="space-y-2">
-                    <Label
-                      htmlFor="name"
-                      className="font-body text-sm font-medium"
-                    >
+                    <Label htmlFor={`${id}-name`} className="font-body text-sm font-medium">
                       Full Name
                     </Label>
                     <Input
-                      id="name"
+                      id={`${id}-name`}
                       name="name"
                       required
                       placeholder="Jane Smith"
@@ -194,14 +184,11 @@ export function ContactSection() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label
-                      htmlFor="email"
-                      className="font-body text-sm font-medium"
-                    >
+                    <Label htmlFor={`${id}-email`} className="font-body text-sm font-medium">
                       Email
                     </Label>
                     <Input
-                      id="email"
+                      id={`${id}-email`}
                       name="email"
                       type="email"
                       required
@@ -213,14 +200,11 @@ export function ContactSection() {
 
                 <div className="grid gap-5 sm:grid-cols-2">
                   <div className="space-y-2">
-                    <Label
-                      htmlFor="phone"
-                      className="font-body text-sm font-medium"
-                    >
+                    <Label htmlFor={`${id}-phone`} className="font-body text-sm font-medium">
                       Phone
                     </Label>
                     <Input
-                      id="phone"
+                      id={`${id}-phone`}
                       name="phone"
                       type="tel"
                       placeholder="+1 (555) 000-0000"
@@ -228,14 +212,11 @@ export function ContactSection() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label
-                      htmlFor="business"
-                      className="font-body text-sm font-medium"
-                    >
+                    <Label htmlFor={`${id}-business`} className="font-body text-sm font-medium">
                       Business Name
                     </Label>
                     <Input
-                      id="business"
+                      id={`${id}-business`}
                       name="business"
                       placeholder="Your Business"
                       className="h-11 rounded-lg bg-background border-border font-body text-sm placeholder:text-muted-foreground/50"
@@ -244,10 +225,8 @@ export function ContactSection() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label className="font-body text-sm font-medium">
-                    Interested In
-                  </Label>
-                  <Select name="package">
+                  <Label className="font-body text-sm font-medium">Interested In</Label>
+                  <Select name="package" defaultValue={defaultPackage}>
                     <SelectTrigger className="h-11 rounded-lg bg-background border-border font-body text-sm">
                       <SelectValue placeholder="Select a service" />
                     </SelectTrigger>
@@ -262,14 +241,11 @@ export function ContactSection() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label
-                    htmlFor="message"
-                    className="font-body text-sm font-medium"
-                  >
+                  <Label htmlFor={`${id}-message`} className="font-body text-sm font-medium">
                     Message
                   </Label>
                   <Textarea
-                    id="message"
+                    id={`${id}-message`}
                     name="message"
                     required
                     rows={4}

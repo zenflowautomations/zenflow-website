@@ -94,7 +94,7 @@ export function PricingSection() {
                       Monthly Cost Estimator
                     </h3>
                     <p className="text-sm text-muted-foreground font-body">
-                      Adjust the sliders to match your spa&apos;s call volume and see your estimated monthly voice cost.
+                      Adjust the sliders to match your business call volume and see your estimated monthly voice cost.
                     </p>
                   </div>
 

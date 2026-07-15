@@ -24,24 +24,27 @@ const lexendDeca = Lexend_Deca({
 });
 
 export const metadata: Metadata = {
-  title: "ZenFlow Automations | AI Voice & Chat Receptionists for Spas",
+  title: "ZenFlow Automations | AI Automation Agency — Voice, Chat & Workflow Agents",
   description:
-    "Enterprise-grade AI receptionists that answer calls, book appointments, and capture leads around the clock. Never miss another booking or inquiry.",
+    "Enterprise-grade AI automations, voice agents, and chat receptionists for service-based businesses. We build custom AI systems that handle calls, book appointments, and automate workflows across industries.",
   keywords: [
+    "AI automation agency",
     "AI receptionist",
     "AI voice agent",
-    "spa automation",
+    "AI chat agent",
     "automated booking",
-    "chat receptionist",
+    "AI automations",
     "voice AI",
-    "spa management",
+    "workflow automation",
     "ZenFlow Automations",
+    "AI for spas",
+    "AI for dental clinics",
   ],
   authors: [{ name: "ZenFlow Automations" }],
   openGraph: {
-    title: "ZenFlow Automations | AI Voice & Chat Receptionists for Spas",
+    title: "ZenFlow Automations | AI Automation Agency — Voice, Chat & Workflow Agents",
     description:
-      "Enterprise-grade AI receptionists that answer calls, book appointments, and capture leads around the clock.",
+      "Enterprise-grade AI automations, voice agents, and chat receptionists for service-based businesses across industries.",
     type: "website",
   },
 };

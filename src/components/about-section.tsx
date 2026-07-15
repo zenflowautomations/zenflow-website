@@ -17,7 +17,7 @@ const VALUES = [
   {
     title: "Innovative",
     description:
-      "We stay at the forefront of AI voice and chat technology, continuously refining our agents to deliver better results for your spa.",
+      "We stay at the forefront of AI voice, chat, and automation technology, continuously refining our agents to deliver better results for your business.",
   },
   {
     title: "Accessible",
@@ -60,7 +60,7 @@ export function AboutSection() {
               custom={1}
               className="mt-6 font-heading text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight"
             >
-              AI that liberates spa owners from the front desk
+              AI that frees businesses from repetitive work
             </motion.h2>
 
             <motion.div variants={fadeInUp} custom={2} className="mt-8 space-y-6">
@@ -69,11 +69,11 @@ export function AboutSection() {
                   Our Mission
                 </h3>
                 <p className="text-muted-foreground font-body text-sm sm:text-base leading-relaxed">
-                  We harness AI to liberate spa owners from the stress of missed
-                  calls and lost revenue. We seamlessly blend intelligent
-                  technology alongside human front-desk teams, taking over the
-                  repetitive workload of bookings, follow-ups, and customer
-                  service so entrepreneurs can reclaim their time.
+                  We harness AI to free business owners from the stress of
+                  missed calls, lost leads, and manual tasks. We seamlessly
+                  blend intelligent technology alongside human teams, taking
+                  over the repetitive workload of bookings, follow-ups, and
+                  customer service so entrepreneurs can reclaim their time.
                 </p>
               </div>
 
@@ -82,11 +82,11 @@ export function AboutSection() {
                   Our Vision
                 </h3>
                 <p className="text-muted-foreground font-body text-sm sm:text-base leading-relaxed">
-                  A world where local service businesses operate in a perfect
+                  A world where service-based businesses operate in a perfect
                   state of flow. AI seamlessly absorbs the chaos of frontline
                   communication, entirely eliminating missed calls and lost
                   revenue, so that business owners are finally free to focus on
-                  their craft, their clients, and their own well-being.
+                  their craft, their clients, and their own growth.
                 </p>
               </div>
 
@@ -96,10 +96,10 @@ export function AboutSection() {
                 </h3>
                 <p className="text-muted-foreground font-body text-sm sm:text-base leading-relaxed">
                   Enterprise-grade AI automation at small-business prices. We
-                  make advanced, revenue-saving technology accessible to spas
-                  that thought custom AI was out of their budget, delivering the
-                  same powerful results as the large firms with an ROI you can
-                  feel from day one.
+                  make advanced, revenue-saving technology accessible to
+                  businesses that thought custom AI was out of their budget,
+                  delivering the same powerful results as large firms with an
+                  ROI you can feel from day one.
                 </p>
               </div>
             </motion.div>

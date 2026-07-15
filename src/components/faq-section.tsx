@@ -18,7 +18,7 @@ const FAQS = [
   {
     question: "Will the AI sound robotic or unnatural to my clients?",
     answer:
-      "No. Our AI voice agents are built with natural-language voice technology that speaks with a calm, professional tone. Your clients will experience a conversation that feels human-like and polished. For our Total Zen tier, we also offer custom voice cloning so the AI can sound exactly like your best receptionist.",
+      "No. Our AI voice agents are built with natural-language voice technology that speaks with a calm, professional tone. Your clients will experience a conversation that feels human-like and polished. For our Total Zen tier, we also offer custom voice cloning so the AI can sound exactly like your best team member.",
   },
   {
     question: "How long does it take to get set up?",
@@ -28,7 +28,7 @@ const FAQS = [
   {
     question: "Does it integrate with my existing booking software?",
     answer:
-      "Yes. We integrate directly with the booking platforms most spas already use, including Vagaro, Mindbody, and Square Appointments. Your AI receptionist can check availability and book appointments in real time without requiring any changes to your current setup.",
+      "Yes. We integrate directly with popular booking platforms and CRMs used across industries. Whether you use Vagaro, Mindbody, Square Appointments, Dentrix, or custom solutions, your AI receptionist can check availability and book appointments in real time without requiring any changes to your current setup.",
   },
   {
     question: "What happens when the AI encounters a question it cannot answer?",
@@ -36,19 +36,19 @@ const FAQS = [
       "The AI is configured with intelligent routing. If a caller or chatter asks something outside its knowledge base, the system routes the conversation to a human team member. This ensures your clients always receive accurate, helpful responses while the AI handles the repetitive, high-volume inquiries autonomously.",
   },
   {
-    question: "Is this a replacement for my front-desk staff?",
+    question: "Is this a replacement for my staff?",
     answer:
-      "Not at all. Our AI receptionist is designed to work alongside your human team, not replace them. It absorbs the repetitive, high-volume workload so your staff can focus on providing an exceptional in-person experience for clients who are physically in your spa. Think of it as a tireless assistant that handles the phones so your team does not have to.",
+      "Not at all. Our AI agents are designed to work alongside your human team, not replace them. They absorb the repetitive, high-volume workload so your staff can focus on providing an exceptional in-person experience for clients who are physically at your business. Think of it as a tireless assistant that handles the phones and chats so your team doesn't have to.",
   },
   {
     question: "What if I need to update information like pricing or hours?",
     answer:
-      "You can request updates at any time and we will apply them promptly. Changes to pricing, hours, services, or any other information the AI references can be updated in your ongoing maintenance plan. Our goal is to keep your AI receptionist accurate and current.",
+      "You can request updates at any time and we will apply them promptly. Changes to pricing, hours, services, or any other information the AI references can be updated in your ongoing maintenance plan. Our goal is to keep your AI agent accurate and current.",
   },
   {
-    question: "Do you work with businesses outside the spa industry?",
+    question: "What industries do you work with?",
     answer:
-      "While our current focus and specialization is the spa and wellness industry, our AI receptionist technology is applicable to any service-based business that relies on phone calls and appointments. If you operate in dental, legal, or other appointment-driven industries, reach out and we can discuss your needs.",
+      "We currently specialize in Spas & Wellness and Dental Clinics, with more industries being added soon. Our AI receptionist and automation technology is applicable to any service-based business that relies on phone calls, appointments, and customer communication. If your industry isn't listed, reach out — we'd love to explore how we can help.",
   },
 ];
 
@@ -92,7 +92,7 @@ export function FaqSection() {
             custom={2}
             className="mt-4 text-base sm:text-lg text-muted-foreground font-body leading-relaxed"
           >
-            Straightforward answers to the questions spa owners ask most.
+            Straightforward answers to the questions business owners ask most.
           </motion.p>
         </motion.div>
 
