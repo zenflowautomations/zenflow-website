@@ -7,6 +7,7 @@ const contactSchema = z.object({
   phone: z.string().optional(),
   business: z.string().optional(),
   package: z.string().optional(),
+  contactMethod: z.string().optional(),
   message: z.string().min(10, "Message must be at least 10 characters"),
 });
 
@@ -43,6 +44,7 @@ export async function POST(request: NextRequest) {
         phone: data.phone || "",
         business: data.business || "",
         package: data.package || "",
+        contactMethod: data.contactMethod || "",
         message: data.message,
         submittedAt: new Date().toISOString(),
       }),

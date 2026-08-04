@@ -52,6 +52,7 @@ export function ContactForm({ defaultPackage, customId }: ContactFormProps) {
           phone: data.get("phone") as string,
           business: data.get("business") as string,
           package: data.get("package") as string,
+          contactMethod: data.get("contactMethod") as string,
           message: data.get("message") as string,
         }),
       });
@@ -241,6 +242,21 @@ export function ContactForm({ defaultPackage, customId }: ContactFormProps) {
                 </div>
 
                 <div className="space-y-2">
+                  <Label className="font-body text-sm font-medium">Preferred Contact Method</Label>
+                  <Select name="contactMethod" defaultValue="email">
+                    <SelectTrigger className="h-11 rounded-lg bg-background border-border font-body text-sm">
+                      <SelectValue placeholder="Select method" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="email">Email</SelectItem>
+                      <SelectItem value="whatsapp">WhatsApp</SelectItem>
+                      <SelectItem value="phone">Phone</SelectItem>
+                      <SelectItem value="instagram">Instagram</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-2">
                   <Label htmlFor={`${id}-message`} className="font-body text-sm font-medium">
                     Message
                   </Label>
@@ -271,6 +287,9 @@ export function ContactForm({ defaultPackage, customId }: ContactFormProps) {
                     </>
                   )}
                 </Button>
+                <p className="text-xs text-muted-foreground/60 font-body text-center -mt-2">
+                  *By clicking this button you agree to receive messages from us
+                </p>
               </form>
             )}
           </motion.div>
