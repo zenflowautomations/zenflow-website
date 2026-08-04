@@ -30,14 +30,6 @@ const NAV_LINKS = [
   { label: "Contact", href: "/contact" },
 ];
 
-const subscribeToMediaQuery = (callback: () => void) => {
-  const mql = window.matchMedia("(min-width: 768px)");
-  mql.addEventListener("change", callback);
-  return () => mql.removeEventListener("change", callback);
-};
-const getMediaSnapshot = () => window.matchMedia("(min-width: 768px)").matches;
-const getMediaServerSnapshot = () => false;
-
 function isHashLink(href: string) {
   return href.startsWith("/#");
 }
@@ -54,12 +46,6 @@ export function Navigation() {
     () => () => {},
     () => true,
     () => false
-  );
-
-    const isDesktop = useSyncExternalStore(
-    subscribeToMediaQuery,
-    getMediaSnapshot,
-    getMediaServerSnapshot
   );
 
   useEffect(() => {
@@ -126,8 +112,7 @@ export function Navigation() {
           </Link>
 
           {/* Desktop Nav */}
-          {mounted && isDesktop && (
-          <div className="flex items-center gap-1">
+          <div className="hidden md:flex items-center gap-1">
             {NAV_LINKS.map((link) =>
               link.children ? (
                 <div key={link.label} className="relative" ref={dropdownRef}>
@@ -190,7 +175,7 @@ export function Navigation() {
               )
             )}
           </div>
-          )}
+
           {/* Right side */}
           <div className="flex items-center gap-3">
             {mounted && (
@@ -209,22 +194,19 @@ export function Navigation() {
               </Button>
             )}
 
-                        {mounted && isDesktop && (
             <Button
               asChild
-              className="h-9 px-5 bg-brand hover:bg-brand-dark text-white font-body text-sm rounded-full transition-all duration-200 hover:shadow-[0_0_20px_rgba(101,155,255,0.3)]"
+              className="hidden md:inline-flex h-9 px-5 bg-brand hover:bg-brand-dark text-white font-body text-sm rounded-full transition-all duration-200 hover:shadow-[0_0_20px_rgba(101,155,255,0.3)]"
             >
               <Link href="/contact">Get Started</Link>
             </Button>
-            )}
 
-            {mounted && !isDesktop && (
             <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
               <SheetTrigger asChild>
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="h-9 w-9"
+                  className="md:hidden h-9 w-9"
                   aria-label="Open menu"
                 >
                   <Menu className="h-5 w-5" />
@@ -322,7 +304,6 @@ export function Navigation() {
                 </div>
               </SheetContent>
             </Sheet>
-            )}
           </div>
         </div>
       </nav>
