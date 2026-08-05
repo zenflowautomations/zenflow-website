@@ -6,13 +6,13 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Moon, Sun, Menu, X, ChevronDown, Home } from "lucide-react";
 import { useTheme } from "next-themes";
-import { Button } from "components/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
   SheetTrigger,
   SheetTitle,
-} from "components/ui/sheet";
+} from "@/components/ui/sheet";
 
 const NAV_LINKS = [
   {
